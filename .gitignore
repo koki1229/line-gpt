@@ -1,3 +1,45 @@
-.env
+# Python bytecode
 __pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+pyenv/
 .python-version
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Compiled source files
+*.so
+*.egg-info/
+dist/
+build/
+*.pyc
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+._.Trashes
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Other
+*.swp
+*.bak
+*.pyo
+
+# Application-specific files to include
+conf.json
