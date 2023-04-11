@@ -45,7 +45,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="event.message.text"))
+        TextSendMessage(text=event.message.text))
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
