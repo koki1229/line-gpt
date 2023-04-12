@@ -21,11 +21,13 @@ with open(ABS_PATH+'/conf.json', 'r') as f:
 #LINEへのアクセス情報を入力
 LINE_CHANNEL_ACCESS_TOKEN = CONF_DATA["CHANNEL_ACCESS_TOKEN"]
 LINE_CHANNEL_SECRET = CONF_DATA["CHANNEL_SECRET"]
+OPEN_AI_KEY = CONF_DATA["OPEN_AI_KEY"]
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 def responseGpt(input_text):
+    openai.api_key = OPEN_AI_KEY
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
