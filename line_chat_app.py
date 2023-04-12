@@ -34,7 +34,7 @@ def responseGpt(input_text):
             {"role": "user", "content": input_text},
         ]
     )
-    return response
+    return response["choices"][0]["message"]["content"]
 
 #ルーティングの設定、POSTリクエストが来たらcallback関数を返す
 @app.route("/callback", methods=['POST'])
