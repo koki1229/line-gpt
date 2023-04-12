@@ -1,3 +1,4 @@
+import openai
 import os
 import json
 from flask import Flask, request, abort
@@ -24,6 +25,15 @@ LINE_CHANNEL_SECRET = CONF_DATA["CHANNEL_SECRET"]
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
+def responseGpt(input_text):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": input_text},
+        ]
+    )
+    return response
+
 #ルーティングの設定、POSTリクエストが来たらcallback関数を返す
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -45,7 +55,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=responseGpt(event.message.text)))
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
