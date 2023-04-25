@@ -1,7 +1,13 @@
 import openai
 import os
 import json
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 from flask import Flask, request, abort
+
+cred = credentials.Certificate("./line-gpt-6b7e3-firebase-adminsdk-b72ie-bd038dd4f9.json")
+firebase_admin.initialize_app(cred)
 
 from linebot import (
     LineBotApi, WebhookHandler

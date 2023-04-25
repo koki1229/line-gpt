@@ -1,3 +1,4 @@
+firebase-admin==6.1.0
 Flask==2.2.3
 line-bot-sdk==2.4.2
 openai==0.27.3
